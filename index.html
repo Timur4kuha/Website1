@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Заработок баллов</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: #0f172a;
+    color: white;
+    text-align: center;
+}
+
+h1 {
+    margin-top: 30px;
+}
+
+.balance {
+    font-size: 24px;
+    margin: 20px;
+}
+
+.task {
+    background: #1e293b;
+    margin: 20px auto;
+    padding: 20px;
+    width: 300px;
+    border-radius: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background: #22c55e;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #16a34a;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Выполняй задания и получай баллы</h1>
+
+<div class="balance">
+Баланс: <span id="points">0</span>
+</div>
+
+<div class="task">
+    <h3>Подписаться на канал</h3>
+    <p>+10 баллов</p>
+    <button onclick="completeTask(10)">Выполнить</button>
+</div>
+
+<div class="task">
+    <h3>Перейти по ссылке</h3>
+    <p>+5 баллов</p>
+    <button onclick="completeTask(5)">Выполнить</button>
+</div>
+
+<div class="task">
+    <h3>Зарегистрироваться</h3>
+    <p>+20 баллов</p>
+    <button onclick="completeTask(20)">Выполнить</button>
+</div>
+
+<script>
+let points = localStorage.getItem("points") || 0;
+document.getElementById("points").innerText = points;
+
+function completeTask(amount) {
+    points = parseInt(points) + amount;
+    localStorage.setItem("points", points);
+    document.getElementById("points").innerText = points;
+}
+</script>
+
+</body>
+</html>
